@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const note  = require('../../db/db.json');
 
-
+//Create a new note function
 function createNote(body, note) {
     const notes = body;
     note.push(notes);
@@ -13,15 +13,18 @@ function createNote(body, note) {
     );
     
 };
+
+//routes
+
 router.get('/notes', (req, res) => {
     res.json(note);
 });
-
 
 router.post('/notes', (req, res) =>{
     req.body.id = note.length.toString();
     const notes = createNote(req.body, note);
     res.json(notes);
 })
+
 
 module.exports = router;
